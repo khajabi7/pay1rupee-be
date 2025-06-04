@@ -10,6 +10,7 @@ import { AppService } from './app.service';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
+      logging: true,
       type: 'postgres',
       host: process.env.DATABASE_HOST || 'localhost',
       port: parseInt(process.env.DATABASE_PORT, 10) || 5432,
