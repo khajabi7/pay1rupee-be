@@ -18,6 +18,9 @@ import { AppService } from './app.service';
       database: process.env.DATABASE_NAME || 'pay1rupee',
       autoLoadEntities: true,
       synchronize: process.env.NODE_ENV === 'production' ? false : true,
+      ssl: {
+        rejectUnauthorized: false, // Required for Supabase
+      },
     }),
     PaymentModule,
   ],
