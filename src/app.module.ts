@@ -22,6 +22,12 @@ import { AppService } from './app.service';
       ssl: {
         rejectUnauthorized: false, // Required for Supabase
       },
+      logger: 'advanced-console',
+      extra: {
+        connectionTimeoutMillis: 5000,
+        max: 10,
+        family: 4, // Force IPv4
+      },
     }),
     PaymentModule,
   ],
