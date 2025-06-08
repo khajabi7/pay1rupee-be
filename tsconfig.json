@@ -9,6 +9,7 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES2021",
     "sourceMap": true,
+    "moduleResolution": "node",
     "strict": true,
     "outDir": "./dist",
     "baseUrl": "./",
@@ -18,6 +19,7 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
+    "types": ["node", "express"],
     "noFallthroughCasesInSwitch": false
   },
   "include": ["src/**/*"],
