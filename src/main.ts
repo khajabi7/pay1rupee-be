@@ -11,8 +11,9 @@ async function bootstrap() {
   app.enableCors();
   app.useWebSocketAdapter(new IoAdapter(app)); // Enable Socket.IO
   app.useStaticAssets(join(__dirname, '..', 'uploads'), { prefix: '/uploads/' });
-const port = parseInt(process.env.PORT, 10) || 3000;  await app.listen(port);
-  console.log(`Backend running on ${port}`);
+//const port = parseInt(process.env.PORT, 10) || 3000;  await app.listen(port);
+const port = process.env.PORT || 3000; // Fallback to 3000 for local  
+console.log(`Backend running on ${port}`);
 }
 bootstrap();
 

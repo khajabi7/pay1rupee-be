@@ -10,7 +10,8 @@ import { AppService } from './app.service';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
-      logging: true,
+      //logging: true,
+      logging:['error', 'query', 'schema'],
       type: 'postgres',
       url: process.env.DATABASE_URL,
       //host: process.env.DATABASE_HOST || 'localhost',
@@ -47,9 +48,10 @@ export class AppModule {
       //user: process.env.DATABASE_USER,
       //db: process.env.DATABASE_NAME,
       ssl: process.env.PGSSLMODE,
-              family: process.env.NODE_PG_FORCE_IPV4 === 'true' ? 4 : undefined,
+      
+      //family: process.env.NODE_PG_FORCE_IPV4 === 'true' ? 4 : undefined,
 
-      //family: 4,
+      family: 4,
     });
   }
 }
