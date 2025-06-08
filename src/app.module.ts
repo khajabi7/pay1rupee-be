@@ -32,5 +32,16 @@ import { AppService } from './app.service';
     PaymentModule,
   ],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    console.log('DB Config:', {
+      host: process.env.DATABASE_HOST,
+      port: process.env.DATABASE_PORT,
+      user: process.env.DATABASE_USER,
+      db: process.env.DATABASE_NAME,
+      ssl: process.env.PGSSLMODE,
+      family: 4,
+    });
+  }
+}
 
