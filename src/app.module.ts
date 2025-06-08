@@ -12,6 +12,7 @@ import { AppService } from './app.service';
     TypeOrmModule.forRoot({
       logging: true,
       type: 'postgres',
+      url: process.env.DATABASE_URL,
       host: process.env.DATABASE_HOST || 'localhost',
       port: parseInt(process.env.DATABASE_PORT, 10) || 5432,
       username: process.env.DATABASE_USER || 'postgres',
@@ -38,6 +39,7 @@ export class AppModule {
     console.log('DB Config:', {
       host: process.env.DATABASE_HOST,
       port: process.env.DATABASE_PORT,
+      url: process.env.DATABASE_URL,
       user: process.env.DATABASE_USER,
       db: process.env.DATABASE_NAME,
       ssl: process.env.PGSSLMODE,
