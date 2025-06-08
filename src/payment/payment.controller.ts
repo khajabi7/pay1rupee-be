@@ -1,6 +1,7 @@
 import { Controller, Post, Get, Body, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { PaymentService } from './payment.service';
+//import { Multer } from 'multer';
 
 @Controller('payment')
 export class PaymentController {
@@ -21,11 +22,17 @@ export class PaymentController {
     return this.paymentService.getPaymentCount();
   }
 
-  @Post('upload-video')
-  @UseInterceptors(FileInterceptor('video'))
-  async uploadVideo(@UploadedFile() file: Express.Multer.File) {
-    return this.paymentService.uploadVideo(file);
-  }
+  // @Post('upload-video')
+  // @UseInterceptors(FileInterceptor('video'))
+  // async uploadVideo(@UploadedFile() file: Multer.File) {
+  //   return this.paymentService.uploadVideo(file);
+  // }
+
+  // @Post('upload-video')
+  // @UseInterceptors(FileInterceptor('video'))
+  // async uploadVideo(@UploadedFile() file: Express.Multer.File) {
+  //   return this.paymentService.uploadVideo(file);
+  // }
 
   @Get('videos')
   async getVideos() {

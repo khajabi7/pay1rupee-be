@@ -7,7 +7,7 @@ import { Payment } from './payment.entity';
 import * as crypto from 'crypto';
 import * as path from 'path';
 import * as fs from 'fs';
-import { Multer } from 'multer'; // Add this import
+//import { Multer } from 'multer'; // Add this import
 
 @Injectable()
 export class PaymentService {
@@ -65,14 +65,23 @@ export class PaymentService {
     return { totalCount: count };
   }
 
-  async uploadVideo(file: Express.Multer.File): Promise<{ url: string }> {
-    const uploadDir = path.join(__dirname, '..', '..', 'uploads');
-    if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
-    const filePath = path.join(uploadDir, `${Date.now()}-${file.originalname}`);
-    fs.writeFileSync(filePath, file.buffer);
-    const url = `http://localhost:3000/uploads/${path.basename(filePath)}`;
-    return { url };
-  }
+  // async uploadVideo(file: Multer.File): Promise<{ url: string }> {
+  //   const uploadDir = path.join(__dirname, '..', '..', 'Uploads');
+  //   if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
+  //   const filePath = path.join(uploadDir, `${Date.now()}-${file.originalname}`);
+  //   fs.writeFileSync(filePath, file.buffer);
+  //   const url = `http://localhost:3000/uploads/${path.basename(filePath)}`;
+  //   return { url };
+  // }
+
+  // async uploadVideo(file: Express.Multer.File): Promise<{ url: string }> {
+  //   const uploadDir = path.join(__dirname, '..', '..', 'uploads');
+  //   if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
+  //   const filePath = path.join(uploadDir, `${Date.now()}-${file.originalname}`);
+  //   fs.writeFileSync(filePath, file.buffer);
+  //   const url = `http://localhost:3000/uploads/${path.basename(filePath)}`;
+  //   return { url };
+  // }
 
   async getVideos(): Promise<{ urls: string[] }> {
     const uploadDir = path.join(__dirname, '..', '..', 'uploads');
