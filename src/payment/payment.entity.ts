@@ -5,16 +5,16 @@ export class Payment {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ unique: true, nullable: true })
   transactionId: string;
 
   @Column({ default: 1.0 })
   amount: number;
 
-  @Column()
+  @Column({ unique: false, nullable: true })
   status: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ unique: false, nullable: true })
   createdAt: Date;
 }
 
