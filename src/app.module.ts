@@ -26,7 +26,8 @@ import { AppService } from './app.service';
       extra: {
         connectionTimeoutMillis: 5000,
         max: 10,
-        family: 4, // Force IPv4
+        family: process.env.NODE_PG_FORCE_IPV4 === 'true' ? 4 : undefined,
+        //family: 4, // Force IPv4
       },
     }),
     PaymentModule,
@@ -40,7 +41,9 @@ export class AppModule {
       user: process.env.DATABASE_USER,
       db: process.env.DATABASE_NAME,
       ssl: process.env.PGSSLMODE,
-      family: 4,
+              family: process.env.NODE_PG_FORCE_IPV4 === 'true' ? 4 : undefined,
+
+      //family: 4,
     });
   }
 }
