@@ -8,7 +8,8 @@ import { IoAdapter } from '@nestjs/platform-socket.io';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.useGlobalPipes(new ValidationPipe());
-  app.enableCors();
+  app.enableCors({
+  origin: ['http://localhost:4200', 'https://pay1rupee-challenge.vercel.app']});
   app.useWebSocketAdapter(new IoAdapter(app)); // Enable Socket.IO
   app.useStaticAssets(join(__dirname, '..', 'uploads'), { prefix: '/uploads/' });
 const port = parseInt(process.env.PORT, 10) || 3000;  await app.listen(port);
