@@ -8,17 +8,19 @@ import * as crypto from 'crypto';
 import * as path from 'path';
 import * as fs from 'fs';
 //import { Multer } from 'multer'; // Add this import
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class PaymentService {
   private razorpay = new Razorpay({
-    key_id: 'rzp_test_AbOYskLJYTkSPh',
-    key_secret: '8untlWrLNyGBcyKSlICnrVbJ'
+    key_id: this.configService.get<string>('RAZORPAY_KEY_ID'),
+    key_secret: this.configService.get<string>('RAZORPAY_KEY_SECRET')
   });
 
   constructor(
     @InjectRepository(Payment)
     private paymentRepository: Repository<Payment>,
+    private configService: ConfigService // Inject ConfigService
   ) {}
 
   async createOrder() {
