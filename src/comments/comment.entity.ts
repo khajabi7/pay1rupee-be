@@ -15,7 +15,7 @@ export class Comment {
   city: string;
 
   @Column({ nullable: true })
-  profilePicture: string;
+  profile_picture: string;
 
   @CreateDateColumn()
   createdAt: Date;
