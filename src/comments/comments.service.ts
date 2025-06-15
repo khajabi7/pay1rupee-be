@@ -14,7 +14,7 @@ export class CommentsService {
     try {
       const newComment = this.commentsRepository.create({
         ...comment,
-        createdAt: new Date(),
+        created_at: new Date(),
       });
       return await this.commentsRepository.save(newComment);
     } catch (error) {
