@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpException, HttpStatus } from '@nestjs/common';
 import { CommentsService } from './comments.service';
 import { Comment } from './comment.entity';
 
@@ -8,8 +8,16 @@ export class CommentsController {
 
   @Post()
   async create(@Body() comment: Partial<Comment>): Promise<Comment> {
-    return this.commentsService.create(comment);
-  }
+try {
+         return await this.commentsService.create(comment);
+       } catch (error) {
+         console.error('Error creating comment:', error);
+         throw new HttpException(
+           'Failed to create comment: ' + (error as Error).message,
+           HttpStatus.INTERNAL_SERVER_ERROR,
+         );
+      }
+    }
 
   @Get()
   async findAll(): Promise<Comment[]> {

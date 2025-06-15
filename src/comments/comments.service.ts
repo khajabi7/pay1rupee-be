@@ -11,11 +11,19 @@ export class CommentsService {
   ) {}
 
   async create(comment: Partial<Comment>): Promise<Comment> {
-    const newComment = this.commentsRepository.create(comment);
-    return this.commentsRepository.save(newComment);
+    try {
+      const newComment = this.commentsRepository.create({
+        ...comment,
+        createdAt: new Date(),
+      });
+      return await this.commentsRepository.save(newComment);
+    } catch (error) {
+      console.error('Error in CommentsService.create:', error);
+      throw new Error('Failed to save comment: ' + (error as Error).message);
+    }
   }
 
   async findAll(): Promise<Comment[]> {
-    return this.commentsRepository.find({ order: { createdAt: 'DESC' } });
+    return this.commentsRepository.find();
   }
 }
