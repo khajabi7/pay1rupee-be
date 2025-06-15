@@ -18,5 +18,5 @@ export class Comment {
   profile_picture: string;
 
   @CreateDateColumn()
-  createdAt: Date;
+  created_at: Date;
 }
