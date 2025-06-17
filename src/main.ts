@@ -11,7 +11,7 @@ async function bootstrap() {
   
   // Enable CORS with detailed configuration
   app.enableCors({
-    origin: ['http://localhost:4200', 'https://pay1rupee-challenge.vercel.app'],
+    origin: ['http://localhost:4200', 'https://pay1rupee-challenge.vercel.app','https://www.pay1rupee.co.in/','https://www.pay1rupee.co.in'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
